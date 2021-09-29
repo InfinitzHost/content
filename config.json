@@ -1,0 +1,14 @@
+{
+	"version": "1.0.0",
+	"name": "Kohost",
+	"description": "Built on Kohost 1.0.",
+	"authors": [
+		{
+			"name": "Phillips Data, Inc.",
+			"url": "http://www.blesta.com"
+		}
+	],
+	"require": {
+		"blesta": ">=3.2.0"
+	}
+}

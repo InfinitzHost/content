@@ -1,0 +1,75 @@
+<style>.form-control{color: #7f7f7f;font-size: 15px;border: 1px solid #ced4da;padding: 5px;}.row.login{padding-top:4%;}
+label{font-size: 16px;}body{background-image: linear-gradient(270deg,#0948b3e3 40%,#033cb1ed),url(https://res.cloudinary.com/trias/image/upload/v1613260196/auth-bg-2_dpczqn.jpg);display: -webkit-box;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;-webkit-box-pack: center;justify-content: center;}
+</style>
+                <div class="col-md-12" style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:350px;">
+                    <div class="panel panel-blesta" style="width:350px;padding: 10px;background-color: white;">
+                        <div class="panel-body services-body" style="border:0px solid #e8e8e8;border-radius:5px;padding:15px;background-color: white;">
+							<p style="text-align:center;margin-bottom:8px;">This page is restricted</p>
+							<h5 style="text-align:center;margin-top:10px;margin-bottom:10px;font-size: 1.8rem;">Secure Client Login</h5>
+                            <?php echo $this->Html->ifSet($message);?>
+
+                            <?php
+                            $this->Form->create(null, ['class' => 'disable-on-submit']);
+                            if ($this->Html->ifSet($vars->forward_to)) {
+                                $this->Form->fieldHidden('forward_to', $vars->forward_to);
+                            }
+                            ?>
+                            <fieldset>
+                                <div class="form-group">
+                                    <?php
+                                    $this->Form->label($this->_('ClientLogin.index.field_username', true), 'login_username');
+                                    $this->Form->fieldText('username', $this->Html->ifSet($vars->username), ['id' => 'login_username', 'class' => 'form-control', 'placeholder' => $this->_('ClientLogin.index.field_username', true)]);
+                                    ?>
+                                </div>
+                                <div class="form-group">
+                                    <?php
+                                    $this->Form->label($this->_('ClientLogin.index.field_password', true), 'login_password');
+                                    $this->Form->fieldPassword('password', ['id' => 'login_password', 'class' => 'form-control', 'placeholder' => $this->_('ClientLogin.index.field_password', true)]);
+                                    ?>
+                                </div>
+                                <div class="checkbox">
+                                    <label for="login_remember_me">
+                                        <?php
+                                        $this->Form->fieldCheckbox('remember_me', 'true', $this->Html->ifSet($vars->remember_me, false), ['id' => 'login_remember_me']);
+                                        $this->_('ClientLogin.index.field_rememberme');
+                                        ?>
+                                    </label>
+                                </div>
+                                <?php
+                                if ((isset($captcha) ? $captcha : null)) {
+                                    ?>
+                                    <div class="form-group">
+                                        <?php echo $captcha;?>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                                <button type="submit" class="btn btn-brand-02 border-radius btn-block"><i class="fas fa-sign-in-alt-alt"></i> <?php $this->_('ClientLogin.index.field_loginsubmit');?></button>
+                                <?php
+                                $this->Form->fieldSubmit('login', '', ['class' => 'hidden', 'hidefocus' => 'true']);
+                                ?>
+                            </fieldset>
+                            <?php
+                            $this->Form->end();
+                            ?>
+                        </div>
+                        <div class="panel-footer">
+                            <a href="<?php echo $this->Html->safe($this->base_uri . 'login/reset/');?>"><?php $this->_('ClientLogin.index.link_resetpassword');?></a>
+                            <a href="<?php echo $this->Html->safe($this->base_uri . 'login/forgot/');?>" class="d-block float-xl-right"><?php $this->_('ClientLogin.index.link_forgotusername');?></a>
+                        </div>
+                        <div class="text-center p-2">
+                        <a href="/"><button class="btn btn-social btn-facebook fb-login-button btn-block" data-max-rows="1" data-size="medium"  type="button">
+                        <i class="fa fa-home"></i>
+                        Back to Home
+                        </button></a>
+                        </div>
+                    </div>
+                </div>
+
+<?php
+$this->Javascript->setInline('
+	$(document).ready(function() {
+		$("#login_username").focus();
+	});
+');
+?>

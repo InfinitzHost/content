@@ -1,0 +1,438 @@
+<?php
+$html_dir = (in_array($this->_('AppController.lang.dir', true), ['ltr', 'rtl']) ? $this->_('AppController.lang.dir', true) : 'ltr');
+$html_lang = (!empty($language) ? substr($language, 0, 2) : 'en');
+?><!DOCTYPE html>
+<html dir="<?php $this->Html->_($html_dir);?>" lang="<?php $this->Html->_($html_lang);?>" xml:lang="<?php $this->Html->_($html_lang);?>">
+    <head>
+        <meta http-equiv="content-type" content="text/html" />
+        <meta name="referrer" content="no-referrer-when-downgrade">
+        <meta charset="UTF-8" />
+        <title><?php echo $this->Html->safe(($this->Html->ifSet($page_title) ? $page_title . ' | ' : '') . $this->Html->ifSet($system_company->name));?></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--favicon icon-->
+       <meta property="og:site_name" content="InfinitzHost" />
+<meta property="og:url" content="https://infinitzhost.com" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Dashboard | InfinitzHost" />
+<meta property="og:image" content="https://infinitzhost.com/img/OG.png" />
+<link rel="icon" type="image/png" href="https://infinitzhost.com/img/favicon.png" />
+
+
+        <link href="https://cdn.jsdelivr.net/gh/InfinitzHost/content@main/application.min.css" rel="stylesheet" type="text/css" />
+        <?php
+        // Theme CSS
+        if (isset($theme_css)) {
+        ?>
+        <link href="<?php $this->Html->_($theme_css);?>" rel="stylesheet" type="text/css" media="screen" />
+        <?php
+        }
+        if ($this->_('AppController.lang.dir', true) == 'rtl') {
+        ?>
+        <link href="https://cdn.jsdelivr.net/gh/InfinitzHost/content@main/rtl.css" rel="stylesheet" type="text/css" media="screen" />
+        <?php
+        }
+        ?>
+        <link href="https://cdn.jsdelivr.net/gh/InfinitzHost/content@main/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdn.jsdelivr.net/gh/InfinitzHost/content@main/font-awesome-shims.min.css" rel="stylesheet" type="text/css" />
+
+        <script type="text/javascript" src="<?php echo $this->view_dir;?>javascript/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo $this->view_dir;?>javascript/jquery-migrate.min.js"></script>
+        <!--[if lt IE 10]>
+            <script type="text/javascript" src="<?php echo $this->view_dir;?>javascript/history/json2.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="<?php echo $this->view_dir;?>javascript/history/history.adapter.jquery.js"></script>
+        <script type="text/javascript" src="<?php echo $this->view_dir;?>javascript/history/history.js"></script>
+        <!--[if lt IE 10]>
+            <script type="text/javascript" src="<?php echo $this->view_dir;?>javascript/history/history.html4.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="<?php echo $this->Html->safe($this->view_dir . 'javascript/app.min.js' . (!empty($hash_version) ? '?v=' . $hash_version : ''));?>"></script>
+        <!--build:css-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinitzHost/content@main/main.min.css">
+        <?php
+        echo $this->Javascript->getFiles('head');
+        echo $this->Html->ifSet($custom_head);
+        ?>
+
+        <!--[if lt IE 9]>
+            <script src="<?php echo $this->view_dir;?>javascript/html5shiv.js" type="text/javascript"></script>
+            <script src="<?php echo $this->view_dir;?>javascript/respond.min.js" type="text/javascript"></script>
+        <![endif]-->
+        <?php echo $this->Html->ifSet($head);?>
+<script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer></script><script>window.addEventListener("load",function(){window.wpcc.init({"corners":"large","colors":{"popup":{"background":"#222222","text":"#ffffff","border":"#f9f9f9"},"button":{"background":"#f9f9f9","text":"#000000"}},"position":"bottom-left","content":{"button":"Okay"}})});</script>
+    </head>
+    <body>
+        <?php echo $this->Html->ifSet($body_start);?>
+        <?php if ($this->Html->ifSet($show_header, true)) { ?>
+        
+        <!--preloader start-->
+        <div id="preloader">
+            <div class="preloader-wrap">
+                <img src="https://cdn.discordapp.com/attachments/809043558220562463/847422401096056863/ih2.png" alt="InfinitzHost" class="img-fluid" />
+                <div class="preloader">
+                    <i>.</i>
+                    <i>.</i>
+                    <i>.</i>
+                </div>
+            </div>
+        </div>
+        <!--preloader end-->
+        
+        <!--header section start-->
+        <header id="header" class="header-main">
+            <!--main header menu start-->
+            <div id="logoAndNav" class="main-header-menu-wrap bg-transparent fixed-top">
+                <div class="container">
+                    <nav class="js-mega-menu navbar navbar-expand-md header-nav">
+    
+                        <!--logo start-->
+                        <a class="navbar-brand" href="/"><img src="https://cdn.discordapp.com/attachments/833204440295014432/846615097186844692/ihlogo.png" width="120" alt="logo" class="img-fluid" /></a>
+                        <!--logo end-->
+    
+                        <!--responsive toggle button start-->
+                        <button type="button" class="navbar-toggler btn" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+                            <span id="hamburgerTrigger">
+                              <span class="ti-menu"></span>
+                            </span>
+                        </button>
+                        <!--responsive toggle button end-->
+    
+                        
+                        <div id="navBar" class="collapse navbar-collapse">
+                            <ul class="navbar-nav ml-auto main-navbar-nav">
+                            </ul>
+                        </div>
+                        <!--main menu end-->
+                    </nav>
+                </div>
+            </div>
+            <!--main header menu end-->
+        </header>
+        <!--header section end-->
+        
+        <div class="main">
+            <!--page header section start-->
+            <section class="ptb-120 gradient-bg">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-7 col-lg-8">
+                            <div class="hero-content-wrap text-white text-center position-relative">
+                                <h1 class="text-white"><?php echo ($this->Html->ifSet($title) ? $this->Html->_($title, true) : $this->_('AppController.client_structure.default_title', true));?></h1>
+                                <p class="lead"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--page header section end-->
+        
+        
+            <div class="nav-content">
+                <nav class="navbar navbar-expand-md navbar-dark">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse pb-2 pb-md-0" id="main-navbar">
+                        <div class="container-md flex-column flex-md-row align-items-start">
+                            <?php
+                            $active_nav = null;
+                            ?>
+                            <ul class="navbar-nav">
+                                <?php
+                                foreach ($this->Html->ifSet($nav, []) as $link => $value) {
+                                    $attributes = ['class' => ['nav-item']];
+                                    $link_attributes = ['class' => ['nav-link']];
+                                    $dropdown = !empty($value['sub']);
+                                    $active = false;
+    
+                                    if ($value['active']) {
+                                        $active = true;
+                                        $attributes['class'][] = 'active';
+                                        $active_nav = $value;
+                                    }
+                                    if ($dropdown) {
+                                        $attributes['class'][] = 'dropdown';
+                                        $link_attributes['class'][] = 'dropdown-toggle';
+                                        $link_attributes['data-toggle'][] = 'dropdown';
+    
+                                        // Set parent to active if child is
+                                        if (!$active) {
+                                            foreach ($this->Html->ifSet($value['sub'], []) as $sub_link => $sub_value) {
+                                                if ($sub_value['active']) {
+                                                    $attributes['class'][] = 'active';
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                ?>
+                                <li<?php echo $this->Html->buildAttributes($attributes);?>>
+                                    <a href="<?php $this->Html->_($link);?>"<?php echo $this->Html->buildAttributes($link_attributes);?>>
+                                        <i class="<?php $this->Html->_($value['icon']);?>"></i>
+                                        <?php
+                                        $this->Html->_($value['name']);
+                                        ?>
+                                    </a>
+                                    <?php
+                                    if (!empty($value['sub'])) {
+                                    ?>
+                                    <div class="dropdown-menu">
+                                        <?php
+                                        foreach ($this->Html->ifSet($value['sub'], []) as $sub_link => $sub_value) {
+                                        ?>
+                                        <a class="dropdown-item" href="<?php $this->Html->_($sub_link);?>"><i class="<?php $this->Html->_($sub_value['icon']);?>"></i> <?php $this->Html->_($sub_value['name']);?></a>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </li>
+                                <?php
+                                }
+                                ?>
+                            </ul>
+                            <ul class="navbar-nav">
+                                <?php
+                                if ($this->Html->ifSet($logged_in)) {
+                                ?>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                        <?php $this->Html->_($contact->first_name);?> <?php $this->Html->_($contact->last_name);?>
+                                        <b class="caret"></b>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="<?php echo $this->Html->safe($this->client_uri . 'main/edit/');?>"><i class="fas fa-edit fa-fw"></i> <?php $this->_('AppController.client_structure.text_update_account');?></a>
+                                        <?php
+                                        if ($this->Html->ifSet($has_email_permission)) {
+                                        ?>
+                                        <a class="dropdown-item" href="<?php echo $this->Html->safe($this->client_uri . 'emails/');?>"><i class="fas fa-inbox fa-fw"></i> <?php $this->_('AppController.client_structure.text_emails');?></a>
+                                        <?php
+                                        }
+    
+                                        if ($this->Html->ifSet($portal_installed, false)) {
+                                        ?>
+                                        <a class="dropdown-item" href="<?php echo $this->Html->safe(WEBDIR);?>"><i class="far fa-circle fa-fw"></i> <?php $this->_('AppController.client_structure.text_return_to_portal');?></a>
+                                        <?php
+                                        }
+                                        ?>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="<?php echo $this->Html->safe($this->client_uri . 'logout/');?>"><i class="fas fa-sign-out-alt fa-fw"></i> <?php $this->_('AppController.client_structure.text_logout');?></a>
+                                    </div>
+                                </li>
+                                <?php
+                                } else {
+                                ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo $this->Html->safe($this->client_uri . 'login/');?>">
+                                        <?php $this->_('AppController.client_structure.text_login');?>
+                                    </a>
+                                </li>
+                                <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div><br>
+        <?php } ?>
+
+            <!-- Begin Content -->
+            <div class="container-md">
+                <div class="row<?php echo (!$this->Html->ifSet($show_header, true) ? ' login' : '');?>">
+                    <?php
+                    if (!empty($active_nav['secondary'])) {
+                    ?>
+                        <div class="col-md-3">
+                            <div class="list-group">
+                                <?php
+                                foreach ($active_nav['secondary'] as $link => $value) {
+                                    $link = $this->Html->safe($this->Html->ifSet($link, ''));
+                                    $prefix = strpos($link, '://') === false ? $this->Html->_($this->base_uri, true) : '';
+                                ?>
+                                    <a href="<?php echo $prefix . $link;?>" class="list-group-item list-group-item-action <?php echo ($value['active'] ? 'active' : '');?>">
+                                        <i class="<?php $this->Html->_($value['icon']);?> fa-fw"></i>
+                                        <?php
+                                        $this->Html->_($value['name']);
+                                        ?>
+                                    </a>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <?php echo $content;?>
+                            </div>
+                        </div>
+                    <?php
+                    } else {
+                        echo $content;
+                    }
+                    ?>
+                </div>
+    
+                <div class="container-fluid">
+                    <div class="row footer">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        <!-- End Main -->
+        
+        <div class="modal fade" id="global_modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="global_modal_title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <?php if ($this->Html->ifSet($show_header, true)) { ?>
+        <!--footer section start-->
+        <footer class="footer-1 ptb-60 gradient-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-4 mb-4 mb-md-4 mb-sm-4 mb-lg-0">
+                        <a href="#" class="navbar-brand mb-2">
+                            <img src="https://cdn.discordapp.com/attachments/833204440295014432/846615097186844692/ihlogo.png" alt="logo" class="img-fluid">
+                        </a>
+                        <br>
+                        <p>InfinitzHost, Your best Hosting Company from India <3</p>
+                        <ul class="list-inline social-list-default background-color social-hover-2 mt-2">
+                            <li class="list-inline-item"><a class="twitter" href="https://www.instagram.com/infinitzhost/"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a class="youtube" href="https://www.youtube.com/channel/UCsjbT50QtGJeXB4TTMyoX0A"><i class="fab fa-youtube"></i></a></li>
+                            <li class="list-inline-item"><a class="linkedin" href="https://www.facebook.com/InfinitzHost.India"><i class="fab fa-facebook"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12 col-lg-8">
+                        <div class="row mt-0">
+                            <div class="col-sm-6 col-md-3 col-lg-3 mb-4 mb-sm-4 mb-md-0 mb-lg-0">
+                                <h6 class="font-weight-normal">Products</h6>
+                                <ul>
+                                    <li>
+                                        <a href="https://dash.infinitzhost.com/order/main/index/Cpanel-Hosting">cPanel Hosting</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://dash.infinitzhost.com/order/main/index/Reseller-Hosting">Reseller Hosting</a>
+                                    </li>
+                                
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-3 mb-4 mb-sm-4 mb-md-0 mb-lg-0">
+                                <h6 class="font-weight-normal">Company</h6>
+                                <ul>
+                                    <li>
+                                        <a href="https://discord.gg/MHwMWbwxAV">Community Discord</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://infinitzhost.com/about-us.html">Our Team</a>
+                                    </li>
+                                                                         <li>
+                                        <a href="https://infinitzhost.com/pp">Privacy Policy</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://infinitzhost.com/tos"> Terms Of Service</a>
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-3">
+                                <h6 class="font-weight-normal">Support</h6>
+                                <ul>
+                                    <li>
+                                        <a href="https://dash.infinitzhost.com/client/plugin/support_manager/client_tickets/add/">Contact Support</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://status.infinitzhost.com">Network Status</a>
+                                    </li>
+                                </ul>
+                            </div>
+                         <!-- BEGIN: TrustLock Badge --><img name="trustseal" alt="Trust Badges" style="border: 0;" src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"><!-- End: TrustLock Badge -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end of container-->
+        </footer>
+    
+        <!--footer bottom copyright start-->
+        <div class="footer-bottom py-3 gray-light-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-7">
+                        <div class="copyright-wrap small-text">
+                         <a href="https://www.abuseipdb.com/user/55592" title="AbuseIPDB is an IP address blacklist for webmasters and sysadmins to report IP addresses engaging in abusive behavior on their networks" alt="AbuseIPDB Contributor Badge">
+	<img src="https://www.abuseipdb.com/contributor/55592.svg" style="width: 200px;"></a> 
+                        </div></div>
+                    <div class="col-md-6 col-lg-5">
+                        <div class="terms-policy-wrap text-lg-right text-md-right text-left">
+
+                            <ul class="list-inline">                          
+                                     <a href="https://cww.verifytrustseal.com/verification/
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkb21haW5JZCI6IjE2MDE2OCIsInRoZW1lIjoibGlnaHQiLCJob3N0bmFtZSI6ImxvZ2luLmN3YXRjaC5jb21vZG8uY29tIiwibGFuZ3VhZ2UiOiJlbiIsImlhdCI6MTYyNzQ1MDcyNn0._QJ1MU-rw6YrBeR5qqFU5-obRUFA-69lWeJ7CSuyJTg?clang=en" target="_blank"><img src="https://s3.amazonaws.com/cww-whitelabel/pd/seal/en/default/trust-seal-protected-light-en.png" alt="cww trust seal"></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--footer bottom copyright end-->
+        <?php } ?>
+        
+        <!--scroll bottom to top button start-->
+        <div class="scroll-top scroll-to-target primary-bg text-white" data-target="html">
+            <span class="fas fa-hand-point-up"></span>
+        </div>
+        <!--scroll bottom to top button end-->
+    
+        <?php echo $this->Javascript->getFiles('body');?>
+        <?php echo $this->Javascript->getInline();?>
+        <?php echo $this->Html->ifSet($body_end);?>
+        
+        <!--build:js
+        <script src="<?php echo $this->view_dir;?>assets/js/vendors/jquery-3.5.1.min.js"></script>-->
+        <script src="<?php echo $this->view_dir;?>assets/js/vendors/popper.min.js"></script>
+        <script src="<?php echo $this->view_dir;?>assets/js/vendors/bootstrap.min.js"></script>
+        <script src="<?php echo $this->view_dir;?>assets/js/vendors/bootstrap-slider.min.js"></script>
+        <script src="<?php echo $this->view_dir;?>assets/js/vendors/jquery.easing.min.js"></script>
+        <script src="<?php echo $this->view_dir;?>assets/js/vendors/owl.carousel.min.js"></script>
+        <script src="<?php echo $this->view_dir;?>assets/js/vendors/countdown.min.js"></script>
+        <script src="<?php echo $this->view_dir;?>assets/js/vendors/jquery.waypoints.min.js"></script>
+        <script src="<?php echo $this->view_dir;?>assets/js/vendors/jquery.rcounterup.js"></script>
+        <script src="<?php echo $this->view_dir;?>assets/js/vendors/magnific-popup.min.js"></script>
+        <script src="<?php echo $this->view_dir;?>assets/js/vendors/validator.min.js"></script>
+        <script src="<?php echo $this->view_dir;?>assets/js/vendors/hs.megamenu.js"></script>
+        <script src="<?php echo $this->view_dir;?>assets/js/app.js"></script>
+           
+
+ <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/611758bfd6e7610a49b02050/1fd1j5bou';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f90669d86919419b8c7f33c3febf48a9"}'></script><!-- End Cloudflare Web Analytics -->
+   </body>
+</html>
